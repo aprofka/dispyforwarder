@@ -6,7 +6,7 @@ import asyncio
 eventLoop = asyncio.new_event_loop()
 
 # Origin/Source Channel ID -> [Target Channel ID, tagType]
-channels = {11111111111111111: [22222222222222222, ""]}
+trackedChannels = {11111111111111111: [22222222222222222, ""]}
 
 
 # Self-bot (Used to get the messages)
@@ -16,7 +16,7 @@ class SelfBot(selfcord.Client):
 
     async def on_message(self, message):
         # This checks if the messages received is from the tracked channels
-        if message.channel.id in channels:
+        if message.channel.id in trackedChannels:
             await realBot.sendMessage(message)
 
 
@@ -26,7 +26,7 @@ class RealBot(discord.Client):
         print("Logged on as", self.user)
 
     async def sendMessage(self, message):
-        channelInfo = channels[message.channel.id]
+        channelInfo = trackedChannels[message.channel.id]
         channel = realBot.get_channel(channelInfo[0])
         await channel.send(
             content=f"[{message.author.name}] \n {message.content} \n {channelInfo[1]}",
