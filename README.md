@@ -1,22 +1,29 @@
 # Dispy Forwarder - Discord message forwarding bot
 
-First, keep in mind that self-bots are against Discord's terms of service and are not officially supported by the newest discord modules/plugins. Self-botting could result in your account being banned, so use it with caution. 
+## Notice
+
+"It's important to note that self-bots contravene Discord's terms of service and lack official support from the latest Discord modules/plugins. Engaging in self-botting carries the potential for your account to be banned, making it imperative to exercise caution when considering its use.
 
 ## How does it work?
-It works by running two bots in the same script simultaneously, the self bot is used to get the messages while the actual/standard bot is used to send the messages. This was done for a few reasons, the first being that, not based on any facts, it would be harder for Discord to detect your self-botting as you never send any messages. Another was that you simply cannot send all the embeds with self-botting, so to combat this we simply let an actual bot do this. 
+
+The bot operates by concurrently running two bots within a single script: a self-bot retrieves messages, while an authentic standard bot dispatches messages. This approach was motivated by several considerations. First and foremost, it's hypothesized—albeit without concrete evidence—that Discord's ability to identify self-botting would be diminished, given the absence of message transmission. Furthermore, limitations associated with self-botting prevented the transmission of all embeds. To address this limitation, I opted to delegate the task to a genuine bot.
+
+## The drawbacks
+
+Since the message-sending component operates as a bot, you'll have the capability to only transmit messages to servers where you hold administrative privileges or possess access to an existing approved bot within the designated server.
 
 ## Instructions
+
 1. Make sure you have the following installed:
-    - Python
-    - [Selfcord](https://github.com/dolfies/discord.py-self/tree/renamed)
+
+   - Python3
+   - [Selfcord](https://github.com/dolfies/discord.py-self/tree/renamed)
 
 2. Open bot.py and add your source - target channels as seen in the file to the variable named "trackedChannels".
 
-3. Execute the following in the terminal/console `python bot.py`
+3. Execute the following in the terminal/console `python bot.py` or run the start.bat file
 
-*You might need to install some additional libraries/packages
-*If you get any errors for missing modules run 'pip install\[PACKAGE-NAME\]'.
-
+\*You might need to install some additional libraries/packages, so if you get any errors for missing packages run 'pip install \[PACKAGE-NAME\]'.
 
 ## LICENSE
 
