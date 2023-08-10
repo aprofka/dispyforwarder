@@ -14,7 +14,7 @@ SELF_BOT_TOKEN = os.getenv("SELF_BOT_TOKEN")
 eventLoop = asyncio.new_event_loop()
 
 # Origin/Source Channel -> [Target Channel, tagType]
-trackedChannels = {1138941324503044190: [1138828092404666538, ""]}
+trackedChannels = {1111111111111111: [2222222222222, "@here"]}
 
 
 def print_with_timestamp(*args, **kwargs):
