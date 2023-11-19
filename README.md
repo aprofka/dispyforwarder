@@ -2,11 +2,11 @@
 
 ## Notice
 
-"It's important to note that self-bots contravene Discord's terms of service and lack official support from the latest Discord modules/plugins. Engaging in self-botting carries the potential for your account to be banned, making it imperative to exercise caution when considering its use.
+It's important to note that self-bots contravene Discord's terms of service and lack official support from the latest Discord modules/plugins. Engaging in self-botting carries the potential for your account to be banned, making it imperative to exercise caution when considering its use.
 
 ## How does it work?
 
-The bot operates by concurrently running two bots within a single script: a self-bot retrieves messages, while an authentic standard bot dispatches messages. This approach was motivated by several considerations. First and foremost, it's hypothesized—albeit without concrete evidence—that Discord's ability to identify self-botting would be diminished, given the absence of message transmission. Furthermore, limitations associated with self-botting prevented the transmission of all embeds. To address this limitation, I opted to delegate the task to a genuine bot.
+The bot operates by concurrently running two bots within a single script: a self-bot retrieves messages, while an authentic standard bot dispatches messages. This approach was motivated by several considerations. First and foremost, it's hypothesized—albeit without concrete evidence—that Discord's ability to identify self-botting would be diminished, given the absence of message transmission by the self-bot. Furthermore, limitations associated with self-botting prevented the transmission of all embeds. To address this limitation, I opted to delegate the task to a genuine bot.
 
 ## The drawbacks
 
