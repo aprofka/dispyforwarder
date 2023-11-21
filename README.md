@@ -16,12 +16,15 @@ Since the message-sending component operates as a bot, you'll have the capabilit
 
 1. Make sure you have the following installed:
 
-   - Python3
+   - [Python3](https://www.python.org/downloads/)
    - [Selfcord](https://github.com/dolfies/discord.py-self/tree/renamed)
+   - Pyaml `pip install pyyaml`
 
-2. Open bot.py and add your source - target channels as seen in the file to the variable named "trackedChannels".
+2. Open env.example and add configure the channels you want to forward as show inside the file.
 
-3. Execute the following in the terminal/console `python bot.py` or run the start.bat file
+3. Change the file env.example to .env
+
+4. Execute the following in the terminal/console `python bot.py` or run the start.bat file
 
 \*You might need to install some additional libraries/packages, so if you get any errors for missing packages run 'pip install \[PACKAGE-NAME\]'.
 
