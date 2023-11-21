@@ -4,18 +4,22 @@ import datetime
 import asyncio
 import os
 from dotenv import load_dotenv
+import yaml
 
-# This will allow us to store and load the bot tokets safely
+# Store and load the bot tokets safely
 load_dotenv()
 REAL_BOT_TOKEN = os.getenv("REAL_BOT_TOKEN")
 SELF_BOT_TOKEN = os.getenv("SELF_BOT_TOKEN")
 
-# This is used to run both bots simultaneously
+# Used to run both bots simultaneously
 eventLoop = asyncio.new_event_loop()
 
-# Origin/Source Channel -> [Target Channel, tagType]
-trackedChannels = {1111111111111111: [2222222222222, "@here"]}
+# Load YAML data from file
+with open('config.yaml', 'r') as file:
+    yaml_data = yaml.safe_load(file)
 
+# Access the trackedChannels from the loaded YAML data
+trackedChannels = yaml_data.get('trackedChannels', {})
 
 def print_with_timestamp(*args, **kwargs):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -39,13 +43,28 @@ class RealBot(discord.Client):
         print_with_timestamp("Logged on as", self.user)
 
     async def sendMessage(self, message):
+        # Gives the destination and tag data
         channelInfo = trackedChannels[message.channel.id]
+        messageContent = f"[{message.author.name}] \n {message.content} \n <@&{channelInfo[1]}>"  # Defaul message without pings
+
         channel = realBot.get_channel(channelInfo[0])
         await channel.send(
-            content=f"[{message.author.name}] \n {message.content} \n {channelInfo[1]}",
+            content=messageContent,
             embeds=message.embeds,
         )
         print_with_timestamp(f"[{message.author.name}]: {message.content[:100]}")
+
+    async def on_message(self, message):
+        if message.author == realBot.user:
+            # Ignore messages sent by the bot itself
+            return
+
+        if message.reference:
+            # The message is a reply to another message
+            replied_to = await message.channel.fetch_message(message.reference.message_id)
+            if replied_to.author == realBot.user:
+                # The replied-to message was sent by the bot
+                await message.reply("Who asked?")
 
 
 # Initialize the bots

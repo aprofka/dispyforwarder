@@ -1,0 +1,4 @@
+# Tracked channels configuration
+# [SOURCE_CHANNEL_ID]: [DESTINATION_CHANNEL_ID, ROLE_ID_TO_PING] 
+trackedChannels:
+  000000000000000: [1111111111111111, 2222222222222222]         # channel-name
